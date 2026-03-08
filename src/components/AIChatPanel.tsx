@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/integrations/supabase/client";
+import { useQueryClient } from "@tanstack/react-query";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -14,11 +15,12 @@ interface AIChatPanelProps {
 }
 
 export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
+  const queryClient = useQueryClient();
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
       content:
-        "Olá! 👋 Sou seu assistente do Kanban. Posso ajudar a criar tarefas, mover entre colunas, sugerir prioridades e resumir o board. O que precisa?",
+        "Olá! 👋 Sou seu assistente do Kanban. Posso **ler, criar, mover e excluir** tarefas diretamente. Pergunte-me qualquer coisa sobre o board!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -45,6 +47,11 @@ export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
       });
 
       if (error) throw error;
+
+      // If the AI mutated tasks, refresh the board
+      if (data.mutatedTasks) {
+        queryClient.invalidateQueries({ queryKey: ["tasks"] });
+      }
 
       setMessages((prev) => [
         ...prev,
