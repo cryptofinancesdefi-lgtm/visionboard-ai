@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { DragDropContext, DropResult } from "@hello-pangea/dnd";
+import confetti from "canvas-confetti";
 import { Task, TaskStatus, COLUMN_CONFIG } from "@/lib/types";
 import { useTasks, useUpdateTask, useTasksByStatus } from "@/hooks/use-tasks";
 import { KanbanColumn } from "./KanbanColumn";
 import { TaskDialog } from "./TaskDialog";
-import { Plus, Search, SlidersHorizontal } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+
+function fireConfetti() {
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+  confetti({ ...defaults, particleCount: 50, origin: { x: 0.3, y: 0.6 } });
+  confetti({ ...defaults, particleCount: 50, origin: { x: 0.7, y: 0.6 } });
+  setTimeout(() => {
+    confetti({ ...defaults, particleCount: 30, origin: { x: 0.5, y: 0.4 } });
+  }, 150);
+}
 
 export function KanbanBoard() {
   const { data: tasks, isLoading } = useTasks();
@@ -18,15 +28,20 @@ export function KanbanBoard() {
   const [newTaskStatus, setNewTaskStatus] = useState<TaskStatus>("todo");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleDragEnd = (result: DropResult) => {
+  const handleDragEnd = useCallback((result: DropResult) => {
     if (!result.destination) return;
     const { draggableId, destination } = result;
     const newStatus = destination.droppableId as TaskStatus;
+
     updateTask.mutate({
       id: draggableId,
       updates: { status: newStatus, order: destination.index },
     });
-  };
+
+    if (newStatus === "done") {
+      fireConfetti();
+    }
+  }, [updateTask]);
 
   const handleCardClick = (task: Task) => {
     setSelectedTask(task);
@@ -57,7 +72,9 @@ export function KanbanBoard() {
       {/* Top bar */}
       <header className="flex items-center gap-4 border-b border-border bg-card px-6 py-4">
         <div>
-          <h1 className="font-display text-xl font-bold text-foreground">Kanban Board</h1>
+          <h1 className="font-display text-xl font-bold text-foreground tracking-tight">
+            Kanban Board
+          </h1>
           <p className="text-xs text-muted-foreground">
             {tasks?.length ?? 0} tarefas no total
           </p>
@@ -73,7 +90,10 @@ export function KanbanBoard() {
               className="w-64 pl-9"
             />
           </div>
-          <Button onClick={() => handleAddTask("todo")}>
+          <Button
+            onClick={() => handleAddTask("todo")}
+            className="bg-gradient-to-r from-primary to-[hsl(285,72%,56%)] hover:opacity-90 transition-opacity"
+          >
             <Plus className="mr-1 h-4 w-4" /> Nova Tarefa
           </Button>
         </div>

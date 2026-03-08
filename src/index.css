@@ -6,64 +6,74 @@
 
 @layer base {
   :root {
-    --background: 0 0% 97%;
-    --foreground: 220 20% 10%;
+    --background: 225 25% 97%;
+    --foreground: 225 25% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 225 25% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 225 25% 8%;
 
-    --primary: 245 58% 51%;
+    --primary: 252 85% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 225 20% 94%;
+    --secondary-foreground: 225 25% 8%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 225 15% 93%;
+    --muted-foreground: 225 12% 50%;
 
-    --accent: 245 58% 96%;
-    --accent-foreground: 245 58% 51%;
+    --accent: 252 80% 95%;
+    --accent-foreground: 252 85% 50%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 245 58% 51%;
+    --success: 152 76% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 95% 52%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 225 15% 90%;
+    --input: 225 15% 90%;
+    --ring: 252 85% 60%;
 
     --radius: 0.75rem;
 
     /* Kanban-specific tokens */
-    --kanban-bg: 220 14% 96%;
+    --kanban-bg: 225 20% 95%;
     --kanban-column-bg: 0 0% 100%;
-    --kanban-card-shadow: 220 20% 10% / 0.04;
-    --kanban-card-hover-shadow: 220 20% 10% / 0.1;
+    --kanban-card-shadow: 252 40% 30% / 0.06;
+    --kanban-card-hover-shadow: 252 40% 30% / 0.12;
 
     /* Priority colors */
-    --priority-low: 152 69% 41%;
-    --priority-medium: 38 92% 50%;
-    --priority-high: 14 89% 55%;
+    --priority-low: 152 76% 42%;
+    --priority-medium: 38 95% 52%;
+    --priority-high: 14 90% 58%;
     --priority-urgent: 0 84% 60%;
 
     /* Status colors */
-    --status-backlog: 220 10% 46%;
-    --status-todo: 245 58% 51%;
-    --status-in-progress: 38 92% 50%;
-    --status-review: 280 67% 52%;
-    --status-done: 152 69% 41%;
+    --status-backlog: 225 12% 56%;
+    --status-todo: 252 85% 60%;
+    --status-in-progress: 38 95% 52%;
+    --status-review: 285 72% 56%;
+    --status-done: 152 76% 42%;
+
+    /* Gradient accents */
+    --gradient-primary: linear-gradient(135deg, hsl(252, 85%, 60%), hsl(285, 72%, 56%));
+    --gradient-success: linear-gradient(135deg, hsl(152, 76%, 42%), hsl(172, 66%, 50%));
 
     /* Sidebar */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 10% 46%;
-    --sidebar-primary: 245 58% 51%;
+    --sidebar-background: 252 40% 14%;
+    --sidebar-foreground: 252 20% 75%;
+    --sidebar-primary: 252 85% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 245 58% 96%;
-    --sidebar-accent-foreground: 245 58% 51%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 245 58% 51%;
+    --sidebar-accent: 252 30% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 252 25% 20%;
+    --sidebar-ring: 252 85% 60%;
 
     /* Font families */
     --font-display: 'Space Grotesk', sans-serif;
@@ -116,4 +126,15 @@
 .column-scroll::-webkit-scrollbar-thumb {
   background: hsl(var(--border));
   border-radius: 2px;
+}
+
+/* Confetti canvas */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
 }

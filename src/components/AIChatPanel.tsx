@@ -20,7 +20,7 @@ export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
     {
       role: "assistant",
       content:
-        "Olá! 👋 Sou seu assistente do Kanban. Posso **ler, criar, mover e excluir** tarefas diretamente. Pergunte-me qualquer coisa sobre o board!",
+        "Olá! 👋 Sou seu assistente do Kanban. Posso **ler, criar, editar, mover e excluir** tarefas diretamente. Peça para editar qualquer tarefa existente!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -84,7 +84,7 @@ export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-[hsl(285,72%,56%)]">
                 <Bot className="h-4 w-4 text-primary-foreground" />
               </div>
               <div>
