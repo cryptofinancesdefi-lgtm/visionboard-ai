@@ -68,7 +68,7 @@ export function KanbanCard({ task, index, onClick }: KanbanCardProps) {
             <div className="flex items-center gap-1">
               <Flag
                 className="h-3 w-3"
-                style={{ color: `hsl(${priorityCfg.colorVar.replace("var(--priority-", "").replace(")", "")})` }}
+                style={{ color: priorityCfg.color }}
                 fill="currentColor"
               />
             </div>

@@ -18,10 +18,7 @@ export function KanbanColumn({ status, tasks, onCardClick, onAddTask }: KanbanCo
       {/* Header */}
       <div className="mb-3 flex items-center justify-between px-1">
         <div className="flex items-center gap-2">
-          <div
-            className="h-2.5 w-2.5 rounded-full"
-            style={{ backgroundColor: `hsl(${config.colorVar.replace("var(--", "").replace(")", "")})` }}
-          />
+          <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: config.color }} />
           <span className="font-display text-sm font-semibold text-foreground">
             {config.label}
           </span>

@@ -5,17 +5,17 @@ export type TaskComment = Tables<"task_comments">;
 export type TaskStatus = "backlog" | "todo" | "in_progress" | "review" | "done";
 export type TaskPriority = "low" | "medium" | "high" | "urgent";
 
-export const COLUMN_CONFIG: Record<TaskStatus, { label: string; colorVar: string }> = {
-  backlog: { label: "Backlog", colorVar: "var(--status-backlog)" },
-  todo: { label: "A Fazer", colorVar: "var(--status-todo)" },
-  in_progress: { label: "Em Andamento", colorVar: "var(--status-in-progress)" },
-  review: { label: "Revisão", colorVar: "var(--status-review)" },
-  done: { label: "Completo", colorVar: "var(--status-done)" },
+export const COLUMN_CONFIG: Record<TaskStatus, { label: string; color: string }> = {
+  backlog: { label: "Backlog", color: "hsl(220, 10%, 46%)" },
+  todo: { label: "A Fazer", color: "hsl(245, 58%, 51%)" },
+  in_progress: { label: "Em Andamento", color: "hsl(38, 92%, 50%)" },
+  review: { label: "Revisão", color: "hsl(280, 67%, 52%)" },
+  done: { label: "Completo", color: "hsl(152, 69%, 41%)" },
 };
 
-export const PRIORITY_CONFIG: Record<TaskPriority, { label: string; colorVar: string }> = {
-  low: { label: "Baixa", colorVar: "var(--priority-low)" },
-  medium: { label: "Média", colorVar: "var(--priority-medium)" },
-  high: { label: "Alta", colorVar: "var(--priority-high)" },
-  urgent: { label: "Urgente", colorVar: "var(--priority-urgent)" },
+export const PRIORITY_CONFIG: Record<TaskPriority, { label: string; color: string }> = {
+  low: { label: "Baixa", color: "hsl(152, 69%, 41%)" },
+  medium: { label: "Média", color: "hsl(38, 92%, 50%)" },
+  high: { label: "Alta", color: "hsl(14, 89%, 55%)" },
+  urgent: { label: "Urgente", color: "hsl(0, 84%, 60%)" },
 };
