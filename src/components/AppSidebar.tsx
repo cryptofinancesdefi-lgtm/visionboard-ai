@@ -1,4 +1,4 @@
-import { LayoutDashboard, Inbox, Calendar, BarChart3, Settings, Bot } from "lucide-react";
+import { LayoutDashboard, Inbox, Calendar, BarChart3, Settings, Bot, Sparkles } from "lucide-react";
 
 interface AppSidebarProps {
   onToggleChat: () => void;
@@ -15,9 +15,10 @@ export function AppSidebar({ onToggleChat, chatOpen }: AppSidebarProps) {
   ];
 
   return (
-    <aside className="flex h-screen w-16 flex-col items-center border-r border-border bg-card py-6 gap-2">
-      <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
-        <span className="font-display text-lg font-bold text-primary-foreground">K</span>
+    <aside className="flex h-screen w-16 flex-col items-center border-r border-sidebar-border bg-sidebar py-6 gap-2">
+      {/* Logo */}
+      <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sidebar-primary to-[hsl(285,72%,56%)] shadow-lg shadow-sidebar-primary/30">
+        <span className="font-display text-lg font-bold text-sidebar-primary-foreground">K</span>
       </div>
 
       <nav className="flex flex-1 flex-col items-center gap-1">
@@ -25,10 +26,10 @@ export function AppSidebar({ onToggleChat, chatOpen }: AppSidebarProps) {
           <button
             key={item.label}
             title={item.label}
-            className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
+            className={`flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200 ${
               item.active
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-sm"
+                : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
             }`}
           >
             <item.icon className="h-5 w-5" />
@@ -36,16 +37,20 @@ export function AppSidebar({ onToggleChat, chatOpen }: AppSidebarProps) {
         ))}
       </nav>
 
+      {/* AI Chat button */}
       <button
         onClick={onToggleChat}
         title="Assistente IA"
-        className={`flex h-10 w-10 items-center justify-center rounded-lg transition-colors ${
+        className={`relative flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-200 ${
           chatOpen
-            ? "bg-primary text-primary-foreground"
-            : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+            ? "bg-gradient-to-br from-sidebar-primary to-[hsl(285,72%,56%)] text-sidebar-primary-foreground shadow-lg shadow-sidebar-primary/30"
+            : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
         }`}
       >
         <Bot className="h-5 w-5" />
+        {!chatOpen && (
+          <Sparkles className="absolute -top-0.5 -right-0.5 h-3 w-3 text-[hsl(38,95%,52%)] animate-pulse" />
+        )}
       </button>
     </aside>
   );
