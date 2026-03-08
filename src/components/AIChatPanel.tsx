@@ -48,6 +48,11 @@ export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
 
       if (error) throw error;
 
+      // If the AI mutated tasks, refresh the board
+      if (data.mutatedTasks) {
+        queryClient.invalidateQueries({ queryKey: ["tasks"] });
+      }
+
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: data.content || "Desculpe, não consegui processar sua mensagem." },
