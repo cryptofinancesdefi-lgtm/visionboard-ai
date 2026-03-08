@@ -85,7 +85,7 @@ export function KanbanCard({ task, index, onClick }: KanbanCardProps) {
 
             <MessageSquare className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
           </div>
-        </motion.div>
+        </div>
       )}
     </Draggable>
   );
