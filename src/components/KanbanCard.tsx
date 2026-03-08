@@ -1,9 +1,8 @@
 import { Task, PRIORITY_CONFIG } from "@/lib/types";
 import { Draggable } from "@hello-pangea/dnd";
-import { Calendar, MessageSquare, Paperclip, Flag } from "lucide-react";
+import { Calendar, MessageSquare, Flag } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { motion } from "framer-motion";
 import { Progress } from "@/components/ui/progress";
 
 interface KanbanCardProps {
@@ -18,16 +17,13 @@ export function KanbanCard({ task, index, onClick }: KanbanCardProps) {
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
-        <motion.div
+        <div
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: index * 0.03 }}
           onClick={() => onClick(task)}
-          className={`group cursor-pointer rounded-lg border border-border bg-card p-3.5 transition-shadow ${
-            snapshot.isDragging ? "shadow-card-drag" : "shadow-card hover:shadow-card-hover"
+          className={`group cursor-pointer rounded-lg border border-border bg-card p-3.5 transition-all ${
+            snapshot.isDragging ? "shadow-card-drag scale-[1.02]" : "shadow-card hover:shadow-card-hover"
           }`}
         >
           {/* Tags */}
