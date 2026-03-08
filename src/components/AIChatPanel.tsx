@@ -15,6 +15,7 @@ interface AIChatPanelProps {
 }
 
 export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
+  const queryClient = useQueryClient();
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
