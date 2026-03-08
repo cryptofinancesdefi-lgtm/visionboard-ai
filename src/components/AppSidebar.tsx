@@ -18,8 +18,8 @@ export function AppSidebar({ onToggleChat, chatOpen }: AppSidebarProps) {
   return (
     <aside className="flex h-screen w-16 flex-col items-center border-r border-sidebar-border bg-sidebar py-6 gap-2">
       {/* Logo */}
-      <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-foreground to-muted-foreground shadow-lg">
-        <span className="font-display text-lg font-bold text-background">K</span>
+      <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-white to-neutral-500 shadow-lg shadow-white/10">
+        <span className="font-display text-lg font-bold text-black">K</span>
       </div>
 
       <nav className="flex flex-1 flex-col items-center gap-1">

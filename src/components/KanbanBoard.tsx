@@ -92,7 +92,7 @@ export function KanbanBoard() {
           </div>
           <Button
             onClick={() => handleAddTask("todo")}
-            className="bg-foreground text-background hover:opacity-90 transition-opacity"
+            className="bg-gradient-to-r from-white to-neutral-500 text-black font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-white/10"
           >
             <Plus className="mr-1 h-4 w-4" /> Nova Tarefa
           </Button>
