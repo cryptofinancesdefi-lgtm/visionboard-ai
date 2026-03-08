@@ -20,7 +20,7 @@ export function AIChatPanel({ open, onClose }: AIChatPanelProps) {
     {
       role: "assistant",
       content:
-        "Olá! 👋 Sou seu assistente do Kanban. Posso **ler, criar, mover e excluir** tarefas diretamente. Pergunte-me qualquer coisa sobre o board!",
+        "Olá! 👋 Sou seu assistente do Kanban. Posso **ler, criar, editar, mover e excluir** tarefas diretamente. Peça para editar qualquer tarefa existente!",
     },
   ]);
   const [input, setInput] = useState("");
