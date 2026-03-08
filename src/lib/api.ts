@@ -20,7 +20,7 @@ export async function createTask(task: {
 }): Promise<Task> {
   const { data, error } = await supabase
     .from("tasks")
-    .insert({ ...task, order: Date.now() })
+    .insert({ ...task, order: Math.floor(Date.now() / 1000) % 2147483647 })
     .select()
     .single();
   if (error) throw error;
